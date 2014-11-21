@@ -1,0 +1,7 @@
+  <dl>
+    <dt ng-repeat-start="(dataset_id, dataset) in datasets">
+      <a href="#/dataset/{{dataset_id}}">{{dataset_id}}</a>
+    </dt>
+    <dd ng-repeat-end><pre> {{ dataset | json }} </pre></dd>
+  </dl>
+
