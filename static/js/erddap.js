@@ -30,6 +30,7 @@ function getParameters(data) {
         for(var key in columnHeaders) {
             record[key] = row[ columnHeaders[key] ];
         }
+        record.checked = false;
         parameters[ record["Variable Name"] ] = record;
     }
     console.log(parameters);

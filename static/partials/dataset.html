@@ -1,9 +1,9 @@
 <div ng-controller="GraphController">
   <div id="chart"></div>
 </div>
-<form>
-<ul>
-  <li ng-repeat="(parameter_name, parameter) in parameters">
-    <input type="checkbox" ng-checked="parameter.checked"> {{ parameter_name }}
-  </li>
-</ul>
+<h2>{{selectedParameter}}</h2>
+<form name="myForm">
+  <span ng-repeat="(parameterName, parameter) in parameters">
+    <input type="radio" ng-value="parameterName" ng-model="$parent.s" ng-change="$parent.radioChange(parameterName)"> {{ parameterName }} <br/>
+  </span>
+</form>

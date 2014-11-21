@@ -32,7 +32,8 @@ app.controller('DatasetListing', function($scope, $http) {
             
 });
 
-app.controller('DatasetController', function($scope, $http, $routeParams) {
+app.controller('DatasetController', function($scope, $http, $routeParams, $rootScope) {
+    $scope.selectedParameter = 'time';
     $http.get('/get_dataset/' + $routeParams.datasetID)
         .success(function(data) {
             $scope.parameters = getParameters(data);
@@ -41,6 +42,13 @@ app.controller('DatasetController', function($scope, $http, $routeParams) {
             console.log("Failed to get ERDDAP Data");
             $scope.parameters = {};
         });
+    $scope.selectedParameter = 'time';
+    $scope.radioChange = function(value) {
+        $rootScope.$emit('parameterselected', value);
+    };
+    $rootScope.$on('parameterselected', function(evt, value) {
+        $scope.selectedParameter = value;
+    });
 });
 
 app.controller('GraphController', function($scope, $http, $routeParams) {
